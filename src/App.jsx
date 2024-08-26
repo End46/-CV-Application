@@ -8,40 +8,38 @@ import { initialData } from './components/InitialData.jsx';
 function App() {
   const [editSection,setEditSection] = useState(0);
   const [data,setData] = useState(initialData);
-  const personalInfo = data[0];
+  const [view,setview] = useState(false);
  // const experiencesRoot = data[1];
  // const educationRoot = data[2];
 
-  function handleChange(value,parent,id,property){
-    switch(parent){
-      case 0:
-        setData({...data, 0: {...personalInfo, [property]: value}});
-        break;
-      case 1:
-      case 2:
-        setData({...data,parent: {...parent, id:{...id,[property]: value}}})
-        break;
-    }
+  function handleChange(value,id,property){
+    setData({...data, [id]: {...data[id], [property]: value}});
   }
 
   function handleAdd(parentId){
-    const newId = data.length;
-    const childs = data[parentId].childsId;
-    childs.push(newId);
-    setData({...data,parentId:{...data[parentId],childsId : childs}})
-    setData({...data,newId:{
-      id:newId,
-      value1 : 'New value',
-      value2 : 'New value',
-      value3 : 'New value',
-      value4 : 'New value'
+    const parent = data[parentId];
+    const dataArray = Object.values(data);
+    const newId = dataArray.length;
+    const newChilds = parent.childsId;
+    newChilds.push(newId);
+    setData({...data,[parentId]:{...data[parentId], childsId : newChilds }})
+    setData({...data,[newId]:{
+      id : newId,
+      value1 : "new",
+      value2 : "new",
+      value3 : "new",
+      value4 : "new"
     }})
+    console.log(data)
   }
 
-  console.log(editSection)
+  function onView(){
+    setview(!view)
+  }
+
   return (
     <>
-      <div className='principalContainer'>
+      <div className='principalContainer '>
         <div>
           <Edit
             title = 'Personal Information'
@@ -50,6 +48,7 @@ function App() {
             isActive = {0 === editSection}
             onShow = {()=> setEditSection(0)}
             onChange = {handleChange}
+            onAdd = {handleAdd}
             data = {data}
           />
           <Edit
@@ -72,7 +71,7 @@ function App() {
             onAdd = {handleAdd}
             data = {data}
           />
-          <button onClick={window.print}>print</button>
+          <button onClick={onView}>print</button>
         </div>
         <PreviewView
           data = {data}

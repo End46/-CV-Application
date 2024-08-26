@@ -76,6 +76,8 @@ button:active{
 .form{
     display: flex;
     flex-direction: column;
+    margin-top: 10%;
+    margin-bottom: 5%;
 }
 
 .preview{
@@ -84,4 +86,10 @@ button:active{
     width: 27vw;
     height: 40vw;
     color: #242424;
+}
+
+.principalContainer.print{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
 }
