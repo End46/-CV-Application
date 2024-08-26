@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --previewColor : rgb(212, 209, 209);
+    --shadow : rgb(0, 0, 0);
+    --backColor : rgba(255, 255, 255, 0.87);
+    --textColor : #242424;
+    background-color:#242424;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+      --previewColor : rgb(238, 234, 234);
+      --shadow : rgba(36, 34, 34, 0.932);  
+      --backColor : #0f5999;
+      --textColor : rgba(255, 255, 255, 0.87);
+      color: #1c252e;
+      background-color: #325ef0cc;
+    }
+}
+
+.principalContainer{
+    display: flex;
+    justify-content: center;
+    gap:10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    width: 75%;
+    height: 80vh;
+}
+
+.edit{
+    border: solid rgba(255, 255, 255, 0.87) 2px;
+    margin-bottom: 3vw;
+    padding: 2%;
+}
+
+.encabezado{
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    background-color: var(--backColor);
+    color: var(--textColor);
+    border: none;
+    width: 3vw;
+    height: 1.5vw;
+    border-radius: 2vw;
+    align-self: center;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:active{
+    background-color: transparent;
+}
+
+.add-remove{
+    display: flex;
+    gap: 10%;
+    width: 100%;
+    margin-top: 1vw;
+}
+.add-remove>button{
+    width: 4vw;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.preview{
+    background-color: var(--previewColor);
+    box-shadow: 10px 10px 25px 10px var(--shadow);
+    width: 27vw;
+    height: 40vw;
+    color: #242424;
+}
