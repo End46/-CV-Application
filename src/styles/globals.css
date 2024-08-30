@@ -12,6 +12,71 @@
     color: rgba(255, 255, 255, 0.87);
 }
 
+@media (max-width:767px){
+    :root{
+        --show:block;
+        --container-j:start;
+        --preview-d:none;
+        --container-display: column;
+        --w-button:20%;
+        --text-button:x-small;
+        --text-input:small; 
+        --text-label:large;
+        --text-h1:x-large;
+
+    }
+}
+
+@media (min-width:768px){
+    :root{
+     --show : none;
+     --container-j:center;
+     --preview-d:block;
+     --preview-h:35rem;
+     --preview-w:25rem;
+     --w-button:20%;
+     --text-button:x-small;
+     --text-input:small; 
+     --text-label:large;
+     --text-h1:x-large;   
+    }
+ }
+
+ @media (min-width:1024px){
+    :root{
+     --w-button : 30%;
+     --text-button: small;
+     --text-input:small; 
+     --text-label:medium;
+     --text-h1:x-large;   
+    }
+ }
+
+@media (min-width:1440px){
+   :root{
+    --w-button : 20%;
+    --text-button: small;
+    --text-input: medium; 
+    --text-label: large;
+    --text-h1: xx-large;   
+    }
+}
+
+button{
+    font-size: var(--text-button);
+    width: var(--w-button);
+    height: 1rem;
+}
+input{
+    font-size:var(--text-input)
+}
+label{
+    font-size: var(--text-label);
+}
+h1{
+ font-size: var(--text-h1);   
+}
+
 @media (prefers-color-scheme: light) {
     :root {
       --previewColor : rgb(238, 234, 234);
@@ -25,7 +90,8 @@
 
 .principalContainer{
     display: flex;
-    justify-content: center;
+    justify-content: var(--container-j);
+    flex-direction: var(--container-display);
     gap:10%;
     margin-left: 15%;
     margin-right: 15%;
@@ -49,8 +115,6 @@ button{
     background-color: var(--backColor);
     color: var(--textColor);
     border: none;
-    width: 3vw;
-    height: 1.5vw;
     border-radius: 2vw;
     align-self: center;
 }
@@ -69,8 +133,8 @@ button:active{
     width: 100%;
     margin-top: 1vw;
 }
-.add-remove>button{
-    width: 4vw;
+.remove{
+    margin-right: 10%;
 }
 
 .form{
@@ -81,10 +145,11 @@ button:active{
 }
 
 .preview{
+    display: var(--preview-d);
     background-color: var(--previewColor);
     box-shadow: 10px 10px 25px 10px var(--shadow);
-    width: 27vw;
-    height: 40vw;
+    width: var(--preview-w);
+    height: var(--preview-h);
     color: #242424;
 }
 
@@ -92,4 +157,47 @@ button:active{
     margin: 0;
     width: 100vw;
     height: 100vh;
+}
+
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.show{
+    display: var(--show);
+}
+
+.personalInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 1rem;
+    padding: 1rem;
+    color: rgb(49, 48, 48);
+    border-bottom: #242424 1px solid;
+}
+
+.personalInfo>h3{
+    text-wrap: nowrap;
+}
+
+.information{
+    margin: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    text-wrap: nowrap;
+    border-bottom: #1c252e solid 1px;
+}
+
+.izquierda{
+    border-left:#1c252e solid 1px;
+    padding-left: 0.5rem;
+}
+.derecha{
+    overflow: auto;
+    border-right:#1c252e solid 1px;
+    padding-right: 0.5rem;
 }

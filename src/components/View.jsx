@@ -1,9 +1,9 @@
-
-export default function previewSection({data}){
+/* eslint-disable react/prop-types */
+export default function View({data}){
     return(
         <div className="preview">
             <div className="personalInfo">
-                <h3>{data[0].value1} {data[0].value2}</h3>
+                <h2>{data[0].value1} {data[0].value2}</h2>
                 <div>
                     <p>Contact:</p>
                     <li><em>{data[0].value3}</em></li>
@@ -12,12 +12,12 @@ export default function previewSection({data}){
             </div>
             <div className="information">
                 <div className="derecha">
-                    <h3>Experience:</h3>
+                    <h2>Experience:</h2>
                     {
                         data[1].childsId.length > 0 &&(
                         data[1].childsId.map(e=>(
                             <div key={e}>
-                                <h4>{data[e].value2}:</h4>
+                                <h3>{data[e].value2}:</h3>
                                 <li>{data[e].value1}</li>
                                 <li>Start Date: {data[e].value3}</li>
                                 <li>Finish Date: {data[e].value4}</li>
@@ -26,12 +26,12 @@ export default function previewSection({data}){
                     }
                 </div>
                 <div className="izquierda">
-                <h3>Education:</h3>
+                <h2>Education:</h2>
                     {
                         data[2].childsId.length > 0 &&(
                         data[2].childsId.map(e=>(
                             <div key={e}> 
-                                <h4>{data[e].value1}:</h4>
+                                <h3>{data[e].value1}:</h3>
                                 <li>{data[e].value2}</li>
                                 <li>Start Date: {data[e].value3}</li>
                                 <li>Finish Date: {data[e].value4}</li>

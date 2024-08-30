@@ -38,9 +38,13 @@ export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd
                                 parent={2}
                                 key={e}
                                 />
+                                <button className='remove'>Remove</button>
                             </>)))
                         }
-                        <button onClick={()=>onAdd(2)}>Add</button>
+                        {
+                            data[2].childsId.length < 5 &&
+                            <button onClick={()=>onAdd(2)}>Add</button>
+                        }
                         </>
                     )
                 )
@@ -60,9 +64,13 @@ export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd
                                 parent={1}
                                 key={e}
                                 />
+                                <button className='remove'>Remove</button>
                             </>)))
                         }
-                        <button onClick={()=>onAdd(1)}>Add</button>
+                        {
+                            data[1].childsId.length < 5 &&
+                            <button onClick={()=>onAdd(1)}>Add</button>
+                        }
                         </>
                     )
                 )

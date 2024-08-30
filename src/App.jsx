@@ -3,6 +3,7 @@ import '../src/styles/globals.css';
 import Edit from './components/Edit.jsx'
 import PreviewView from './components/PreviewSection.jsx'
 import { initialData } from './components/InitialData.jsx';
+import ViewSection from './components/View.jsx'
 
 
 function App() {
@@ -21,62 +22,83 @@ function App() {
     const dataArray = Object.values(data);
     const newId = dataArray.length;
     const newChilds = parent.childsId;
-    newChilds.push(newId);
-    setData({...data,[parentId]:{...data[parentId], childsId : newChilds }})
-    setData({...data,[newId]:{
+      newChilds.push(newId);
+      setData({...data,[parentId]:{...data[parentId], childsId : newChilds }})
+      setData({...data,[newId]:{
       id : newId,
       value1 : "new",
       value2 : "new",
       value3 : "new",
       value4 : "new"
     }})
-    console.log(data)
   }
 
+ /* function handleRemove(parentId,id){
+    const parent = data[parentId]:
+    const childsId = parent.childsId;
+    const newChildsArray = childsId.filter((id)=>{
+      
+    })
+  }*/
+
   function onView(){
-    setview(!view)
+    setview(!view);
   }
 
   return (
     <>
-      <div className='principalContainer '>
-        <div>
-          <Edit
-            title = 'Personal Information'
-            labels = {['Name','Last Name','Phone Number','Email']}
-            inputs = {['text','text','text','email']}
-            isActive = {0 === editSection}
-            onShow = {()=> setEditSection(0)}
-            onChange = {handleChange}
-            onAdd = {handleAdd}
-            data = {data}
-          />
-          <Edit
-            title = 'Education'
-            labels = {['School','Degree','Start Date','Finish Date']}
-            inputs = {['text','text','date','date']}
-            isActive = {1 === editSection}
-            onShow = {()=> setEditSection(1)}
-            onChange = {handleChange}
-            onAdd = {handleAdd}
-            data = {data}
-          />
-          <Edit
-            title = 'Experience'
-            labels = {['Position','Company','Start Date','Finish Date']}
-            inputs = {['text','text','date','date']}
-            isActive = {2 === editSection}
-            onShow = {()=> setEditSection(2)}
-            onChange = {handleChange}
-            onAdd = {handleAdd}
-            data = {data}
-          />
-          <button onClick={onView}>print</button>
-        </div>
-        <PreviewView
+      {
+      view ?(
+        <ViewSection
           data = {data}
         />
-      </div>
+      )
+        :
+        <>
+          <div className='titulo'>
+            <h1>Cv Application:</h1>
+            <h3 className='show'> Press print to see your curriculum.</h3>
+          </div>
+          <div className='principalContainer '>
+            <div>
+              <Edit
+                title = 'Personal Information'
+                labels = {['Name','Last Name','Phone Number','Email']}
+                inputs = {['text','text','text','email']}
+                isActive = {0 === editSection}
+                onShow = {()=> setEditSection(0)}
+                onChange = {handleChange}
+                onAdd = {handleAdd}
+                data = {data}
+              />
+              <Edit
+                title = 'Education'
+                labels = {['School','Degree','Start Date','Finish Date']}
+                inputs = {['text','text','date','date']}
+                isActive = {1 === editSection}
+                onShow = {()=> setEditSection(1)}
+                onChange = {handleChange}
+                onAdd = {handleAdd}
+                data = {data}
+              />
+              <Edit
+                title = 'Experience'
+                labels = {['Position','Company','Start Date','Finish Date']}
+                inputs = {['text','text','date','date']}
+                isActive = {2 === editSection}
+                onShow = {()=> setEditSection(2)}
+                onChange = {handleChange}
+                onAdd = {handleAdd}
+                data = {data}
+              />
+              <button onClick={onView}>print</button>
+            </div>
+            <PreviewView
+              data = {data}
+            />
+          </div> 
+        </>
+      }
     </>
   )
 }
