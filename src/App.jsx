@@ -34,9 +34,13 @@ function App() {
     const dataArray = Object.values(data);
     const newId = dataArray.length;
     const newChilds = parent.childsId;
-      newChilds.push(newId);
-      setData({...data,[parentId]:{...data[parentId], childsId : newChilds }})
-      setData({...data,[newId]:{
+    newChilds.push(newId);
+    window.scroll({
+      top: 150*newChilds.length,
+      behavior:"smooth"
+    });
+    setData({...data,[parentId]:{...data[parentId], childsId : newChilds }})
+    setData({...data,[newId]:{
       id : newId,
       value1 : "new",
       value2 : "new",
@@ -52,11 +56,17 @@ function App() {
       childsId: parent.childsId
         .filter(id => id !== childId)
     };
+    if(parent.childsId[nextParent.childsId.length] == childId){
+      window.scroll({
+        top: (100*parent.childsId.length)-25,
+        behavior:"smooth"
+      });
+    }
       setData({...data,[parentId]:nextParent})
   }
 
   function onView(){
-    window.scroll(0,-1000)
+    window.scrollTo(0,0)
     document.body.style.overflow='hidden'
     setview(!view);
   }
@@ -117,7 +127,13 @@ function App() {
                 labels = {['Position','Company','Start Date','Finish Date']}
                 inputs = {['text','text','date','date']}
                 isActive = {2 === editSection}
-                onShow = {()=> setEditSection(2)}
+                onShow = {()=> {
+                  setEditSection(2)
+                  window.scroll({
+                    top:0,
+                    behavior:"smooth"
+                  })
+                }}
                 onChange = {handleChange}
                 onAdd = {handleAdd}
                 data = {data}
