@@ -21,7 +21,7 @@ function App() {
     document.querySelector("#delete").remove();
     window.print();
     new Promise(function(resolve) {
-      setTimeout(function() { resolve(); }, 500);
+      setTimeout(function() { resolve(); }, 1000);
     })
     .then(function() {
       setview(!view);
