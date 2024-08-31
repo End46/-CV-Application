@@ -77,7 +77,7 @@ function App() {
       view ?(
         <div className='view'>
           <div id="delete">
-            <h1>Curriculum ready !!!</h1>
+            <h1>Cv ready !!!</h1>
             <div id='viewButtons'>
               <button onClick={()=>{
                 setview(!view);
