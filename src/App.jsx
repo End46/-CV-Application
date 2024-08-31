@@ -77,7 +77,7 @@ function App() {
       view ?(
         <div className='view'>
           <div id="delete">
-            <h1>Cv ready !!!</h1>
+            <h1>Curriculum ready !!!</h1>
             <div id='viewButtons'>
               <button onClick={()=>{
                 setview(!view);
@@ -96,7 +96,7 @@ function App() {
         <>
           <div className='titulo'>
             <h1>Cv Application:</h1>
-            <h3 className='show'> Press finish to see your CV.</h3>
+            <h3 className='show'> Press finish to see your curriculum.</h3>
           </div>
           <div className='principalContainer '>
             <div>
