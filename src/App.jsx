@@ -56,6 +56,7 @@ function App() {
   }
 
   function onView(){
+    window.scroll(0,-1000)
     document.body.style.overflow='hidden'
     setview(!view);
   }
@@ -68,7 +69,10 @@ function App() {
           <div id="delete">
             <h1>Cv ready !!!</h1>
             <div id='viewButtons'>
-              <button onClick={()=>onView()}>Edit</button>
+              <button onClick={()=>{
+                setview(!view);
+                document.body.style.overflow='auto'
+              }}>Edit</button>
               <button onClick={()=>print()}>Save</button>
             </div>
           </div>
