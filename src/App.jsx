@@ -20,7 +20,12 @@ function App() {
   function print(){
     document.querySelector("#delete").remove();
     window.print();
-    setview(!view);
+    new Promise(function(resolve) {
+      setTimeout(function() { resolve(); }, 500);
+    })
+    .then(function() {
+      setview(!view);
+    });
     document.body.style.overflow='auto'
   }
 
@@ -63,8 +68,8 @@ function App() {
           <div id="delete">
             <h1>Cv ready !!!</h1>
             <div id='viewButtons'>
-              <button onClick={()=>print()}>Save</button>
               <button onClick={()=>onView()}>Edit</button>
+              <button onClick={()=>print()}>Save</button>
             </div>
           </div>
           
@@ -77,7 +82,7 @@ function App() {
         <>
           <div className='titulo'>
             <h1>Cv Application:</h1>
-            <h3 className='show'> Press print to see your curriculum.</h3>
+            <h3 className='show'> Press finish to see your CV.</h3>
           </div>
           <div className='principalContainer '>
             <div>
@@ -114,7 +119,9 @@ function App() {
                 data = {data}
                 onRemove = {handleRemove}
               />
-              <button onClick={onView}>Finish</button>
+              <div className='finish'>
+                <button onClick={onView}>Finish</button>  
+              </div>
             </div>
             <PreviewView
               data = {data}

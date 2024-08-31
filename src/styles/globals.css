@@ -13,6 +13,17 @@
     color: rgba(255, 255, 255, 0.87);
 }
 
+@media (prefers-color-scheme: light) {
+    :root {
+      --previewColor : rgb(238, 234, 234);
+      --shadow : rgba(36, 34, 34, 0.932);  
+      --backColor : #0f5999;
+      --textColor : rgba(255, 255, 255, 0.87);
+      color: #1c252e;
+      background-color: #819bf1;
+    }
+}
+
 @media (max-width:767px){
     :root{
         --show:block;
@@ -78,17 +89,6 @@ h1{
  font-size: var(--text-h1);   
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-      --previewColor : rgb(238, 234, 234);
-      --shadow : rgba(36, 34, 34, 0.932);  
-      --backColor : #0f5999;
-      --textColor : rgba(255, 255, 255, 0.87);
-      color: #1c252e;
-      background-color: #325ef0cc;
-    }
-}
-
 .principalContainer{
     display: flex;
     justify-content: var(--container-j);
@@ -100,6 +100,11 @@ h1{
     width: 75%;
     height: 90vh;
     padding-bottom: 45rem;
+}
+
+.finish{
+    display: flex;
+    justify-content: center;
 }
 
 .edit{
@@ -165,6 +170,7 @@ button:active{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .show{
