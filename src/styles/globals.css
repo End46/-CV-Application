@@ -3,6 +3,7 @@
     padding: 0;
 }
 
+
 :root{
     --previewColor : rgb(212, 209, 209);
     --shadow : rgb(0, 0, 0);
@@ -97,7 +98,8 @@ h1{
     margin-right: 15%;
     margin-top: 5%;
     width: 75%;
-    height: 80vh;
+    height: 90vh;
+    padding-bottom: 45rem;
 }
 
 .edit{
@@ -195,9 +197,50 @@ button:active{
 .izquierda{
     border-left:#1c252e solid 1px;
     padding-left: 0.5rem;
+    width: 100vw;
+    overflow: hidden;
 }
 .derecha{
-    overflow: auto;
+    overflow: hidden;
     border-right:#1c252e solid 1px;
     padding-right: 0.5rem;
+    width: 100vw;
+}
+
+#viewButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+}
+
+.view{
+    margin-top: 2rem;
+    margin-left: 25%;
+    margin-right: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.view .preview{
+    box-shadow: none;
+    display: block;
+    margin-top: 20%;
+    width: 40rem;
+    color : #242424;
+    background-color: transparent;
+}
+
+.view>div>h1{
+    text-align: center;
+}
+
+#viewButtons>button{
+    width: 3rem;
+}
+
+#delete{
+    margin-top: 40%;
+    margin-bottom: 100vh;
 }

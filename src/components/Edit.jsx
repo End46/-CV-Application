@@ -2,7 +2,7 @@ import Form from './Form.jsx'
 import '../styles/globals.css'
 
 
-export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd,data}){
+export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd,data,onRemove}){
     return <div className='edit'>
                 <div className='encabezado'>
                     <h1>{title}</h1>
@@ -38,7 +38,7 @@ export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd
                                 parent={2}
                                 key={e}
                                 />
-                                <button className='remove'>Remove</button>
+                                <button onClick={()=>onRemove(2,e)} className='remove'>Remove</button>
                             </>)))
                         }
                         {
@@ -64,7 +64,7 @@ export default function edit({title,labels,inputs,isActive,onShow,onChange,onAdd
                                 parent={1}
                                 key={e}
                                 />
-                                <button className='remove'>Remove</button>
+                                <button onClick={()=>onRemove(1,e)} className='remove'>Remove</button>
                             </>)))
                         }
                         {

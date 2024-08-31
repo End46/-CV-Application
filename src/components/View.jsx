@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 export default function View({data}){
     return(
         <div className="preview">

@@ -1,4 +1,5 @@
 
+
 export default function previewSection({data}){
     return(
         <div className="preview">

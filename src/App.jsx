@@ -17,6 +17,13 @@ function App() {
     setData({...data, [id]: {...data[id], [property]: value}});
   }
 
+  function print(){
+    document.querySelector("#delete").remove();
+    window.print();
+    setview(!view);
+    document.body.style.overflow='auto'
+  }
+
   function handleAdd(parentId){
     const parent = data[parentId];
     const dataArray = Object.values(data);
@@ -33,15 +40,18 @@ function App() {
     }})
   }
 
- /* function handleRemove(parentId,id){
-    const parent = data[parentId]:
-    const childsId = parent.childsId;
-    const newChildsArray = childsId.filter((id)=>{
-      
-    })
-  }*/
+ function handleRemove(parentId,childId){
+    const parent = data[parentId];
+    const nextParent = {
+      ...parent,
+      childsId: parent.childsId
+        .filter(id => id !== childId)
+    };
+      setData({...data,[parentId]:nextParent})
+  }
 
   function onView(){
+    document.body.style.overflow='hidden'
     setview(!view);
   }
 
@@ -49,9 +59,19 @@ function App() {
     <>
       {
       view ?(
-        <ViewSection
-          data = {data}
-        />
+        <div className='view'>
+          <div id="delete">
+            <h1>Cv ready !!!</h1>
+            <div id='viewButtons'>
+              <button onClick={()=>print()}>Save</button>
+              <button onClick={()=>onView()}>Edit</button>
+            </div>
+          </div>
+          
+          <ViewSection
+            data = {data}
+          />
+        </div>
       )
         :
         <>
@@ -70,6 +90,7 @@ function App() {
                 onChange = {handleChange}
                 onAdd = {handleAdd}
                 data = {data}
+                onRemove = {handleRemove}
               />
               <Edit
                 title = 'Education'
@@ -80,6 +101,7 @@ function App() {
                 onChange = {handleChange}
                 onAdd = {handleAdd}
                 data = {data}
+                onRemove = {handleRemove}
               />
               <Edit
                 title = 'Experience'
@@ -90,8 +112,9 @@ function App() {
                 onChange = {handleChange}
                 onAdd = {handleAdd}
                 data = {data}
+                onRemove = {handleRemove}
               />
-              <button onClick={onView}>print</button>
+              <button onClick={onView}>Finish</button>
             </div>
             <PreviewView
               data = {data}
